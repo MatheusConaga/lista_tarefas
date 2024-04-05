@@ -1,6 +1,8 @@
 # lista_tarefas
 
-A new Flutter project.
+Trabalho desenvolvido para a disciplina de Programação para Dispositivos Moveis.
+Professor: Marcel
+Alunos: Milena, Matheus.
 
 ## Getting Started
 
