@@ -4,7 +4,7 @@ import '../widgets/item.dart';
 import '../models/tarefa.dart';
 
 class Home extends StatefulWidget {
-  Home({Key? key}) : super(key: key);
+  const Home({super.key});
 
   @override
   State<Home> createState() => _HomeState();
@@ -43,8 +43,8 @@ class _HomeState extends State<Home> {
   // Atualizar tarefa
   void _atualizarTarefa(Tarefa tarefaAtualizada) {
     setState(() {
-      int index =
-      listaTarefa.indexWhere((element) => element.id == tarefaAtualizada.id);
+      int index = listaTarefa
+          .indexWhere((element) => element.id == tarefaAtualizada.id);
       if (index != -1) {
         listaTarefa[index] = tarefaAtualizada;
       }
@@ -59,31 +59,29 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: Colors.white70,
       appBar: AppBar(
-        title: Text('Tarefas'),
+        title: const Text('Tarefas'),
         centerTitle: true,
         backgroundColor: Colors.blue,
-        titleTextStyle: TextStyle(
+        titleTextStyle: const TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.bold,
           fontSize: 30,
         ),
-        iconTheme: IconThemeData(color: Colors.white, size: 35),
+        iconTheme: const IconThemeData(color: Colors.white, size: 35),
       ),
       drawer: Drawer(
-        child: Container(
-          child: ListView(
-            children: [
-              ListTile(
-                title: Text('Informações'),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Info()),
-                  );
-                },
-              ),
-            ],
-          ),
+        child: ListView(
+          children: [
+            ListTile(
+              title: const Text('Informações'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Info()),
+                );
+              },
+            ),
+          ],
         ),
       ),
 
@@ -97,7 +95,8 @@ class _HomeState extends State<Home> {
                 tarefa: listaTarefa[index],
                 tarefaMuda: _mudarEstado,
                 deleteTarefa: _deleteItem,
-                onUpdate: _atualizarTarefa, // Passando a função _atualizarTarefa
+                onUpdate:
+                    _atualizarTarefa, // Passando a função _atualizarTarefa
               );
             },
           ),
@@ -107,11 +106,13 @@ class _HomeState extends State<Home> {
               children: [
                 Expanded(
                   child: Container(
-                    margin: EdgeInsets.only(bottom: 20, right: 20, left: 20),
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                    margin:
+                        const EdgeInsets.only(bottom: 20, right: 20, left: 20),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
                           color: Colors.grey,
                           offset: Offset(0.0, 0.0),
@@ -124,14 +125,14 @@ class _HomeState extends State<Home> {
                     // Se houver algum conteúdo a ser exibido dentro do Container, adicione aqui
                     child: TextField(
                       controller: _controller,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                           hintText: 'Adicione uma nova tarefa',
                           border: InputBorder.none),
                     ),
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(
+                  margin: const EdgeInsets.only(
                     bottom: 20,
                     right: 20,
                   ),
@@ -144,10 +145,10 @@ class _HomeState extends State<Home> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       backgroundColor: Colors.blue,
-                      minimumSize: Size(60, 60),
+                      minimumSize: const Size(60, 60),
                       elevation: 10,
                     ),
-                    child: Text(
+                    child: const Text(
                       '+',
                       style: TextStyle(fontSize: 40, color: Colors.white),
                     ),
@@ -161,4 +162,3 @@ class _HomeState extends State<Home> {
     );
   }
 }
-

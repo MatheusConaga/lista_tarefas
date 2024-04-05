@@ -9,18 +9,18 @@ class Item extends StatelessWidget {
   final Function(Tarefa) onUpdate;
 
   const Item({
-    Key? key,
+    super.key,
     required this.tarefa,
     required this.tarefaMuda,
     required this.deleteTarefa,
     required this.onUpdate,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 15),
-      margin: EdgeInsets.only(top: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 15),
+      margin: const EdgeInsets.only(top: 20),
       child: ListTile(
         onTap: () {
           Navigator.push(
@@ -34,7 +34,7 @@ class Item extends StatelessWidget {
           );
         },
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        contentPadding: EdgeInsets.symmetric(horizontal: 20),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 20),
         tileColor: Colors.white,
         leading: GestureDetector(
           onTap: () {
@@ -44,32 +44,38 @@ class Item extends StatelessWidget {
                 context: context,
                 builder: (BuildContext context) {
                   return AlertDialog(
-                    title: Text("Confirmar conclusão"),
-                    content: Text("Tem certeza que deseja marcar esta tarefa como concluída?"),
+                    title: const Text("Confirmar conclusão"),
+                    content: const Text(
+                        "Tem certeza que deseja marcar esta tarefa como concluída?"),
                     actions: [
                       Row(
                         children: [
                           Expanded(
                             child: TextButton(
                               onPressed: () {
-                                Navigator.pop(context); // Fecha a caixa de diálogo
+                                Navigator.pop(
+                                    context); // Fecha a caixa de diálogo
                               },
-                              child: Text(
+                              child: const Text(
                                 "Cancelar",
                                 style: TextStyle(color: Colors.blue),
                               ),
                             ),
                           ),
-                          SizedBox(width: 8), // Adiciona um espaço entre os botões
+                          const SizedBox(width: 8),
+                          // Adiciona um espaço entre os botões
                           Expanded(
                             child: TextButton(
                               onPressed: () {
-                                tarefaMuda(tarefa); // Marca a tarefa como concluída
-                                Navigator.pop(context); // Fecha a caixa de diálogo
+                                tarefaMuda(
+                                    tarefa); // Marca a tarefa como concluída
+                                Navigator.pop(
+                                    context); // Fecha a caixa de diálogo
                               },
-                              child: Text(
+                              child: const Text(
                                 "Concluir",
-                                style: TextStyle(color: Colors.green), // Cor verde
+                                style:
+                                    TextStyle(color: Colors.green), // Cor verde
                               ),
                             ),
                           ),
@@ -102,7 +108,7 @@ class Item extends StatelessWidget {
             );
           },
           child: Text(
-            tarefa.titulo!,
+            tarefa.titulo,
             style: TextStyle(
               fontSize: 16,
               color: Colors.black,
@@ -120,39 +126,44 @@ class Item extends StatelessWidget {
           child: IconButton(
             color: Colors.white,
             iconSize: 20,
-            icon: Icon(Icons.delete),
+            icon: const Icon(Icons.delete),
             onPressed: () {
               // Exibe uma caixa de diálogo de confirmação antes de excluir a tarefa
               showDialog(
                 context: context,
                 builder: (BuildContext context) {
                   return AlertDialog(
-                    title: Text("Confirmar exclusão"),
-                    content: Text("Tem certeza que deseja excluir esta tarefa?"),
+                    title: const Text("Confirmar exclusão"),
+                    content: const Text(
+                        "Tem certeza que deseja excluir esta tarefa?"),
                     actions: [
                       Row(
                         children: [
                           Expanded(
                             child: TextButton(
                               onPressed: () {
-                                Navigator.pop(context); // Fecha a caixa de diálogo
+                                Navigator.pop(
+                                    context); // Fecha a caixa de diálogo
                               },
-                              child: Text(
+                              child: const Text(
                                 "Cancelar",
                                 style: TextStyle(color: Colors.blue),
                               ),
                             ),
                           ),
-                          SizedBox(width: 8), // Adiciona um espaço entre os botões
+                          const SizedBox(width: 8),
+                          // Adiciona um espaço entre os botões
                           Expanded(
                             child: TextButton(
                               onPressed: () {
                                 deleteTarefa(tarefa.id); // Exclui a tarefa
-                                Navigator.pop(context); // Fecha a caixa de diálogo
+                                Navigator.pop(
+                                    context); // Fecha a caixa de diálogo
                               },
-                              child: Text(
+                              child: const Text(
                                 "Apagar",
-                                style: TextStyle(color: Colors.red), // Cor vermelha
+                                style: TextStyle(
+                                    color: Colors.red), // Cor vermelha
                               ),
                             ),
                           ),
