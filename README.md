@@ -1,7 +1,9 @@
 # lista_tarefas
 
 Trabalho desenvolvido para a disciplina de Programação para Dispositivos Moveis.
+
 Professor: Marcel
+
 Alunos: Milena, Matheus.
 
 ## Getting Started
